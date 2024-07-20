@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operations & Loops</title>
+    <style>
+       
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:white
+        }
+        .container {
+            
+            margin: 20px ;
+            padding: 20px;
+            background-color:white;
+        }
+        h1 {
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 50%;
+            padding: 8px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            display: inline-block;
+            background-color: rgb(83, 179, 83);
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            
+            
+            
+        }
+        .btn:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Arithmetic Operations & Loops</h1>
+    <div class="input-group">
+        <label for="num1">Enter the first number:</label>
+        <input type="number" id="num1">
+    </div>
+    <div class="input-group">
+        <label for="num2">Enter the second number:</label>
+        <input type="number" id="num2">
+    </div>
+    <button class="btn" onclick="go()">GO</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function addition(num1, num2) {
+        return num1 + num2;
+    }
+
+    function subtraction(num1, num2) {
+        return num1 - num2;
+    }
+
+    function multiplication(num1, num2) {
+        return num1 * num2;
+    }
+
+    function division(num1, num2) {
+        if (num2 !== 0) {
+            return num1 / num2;
+        } else {
+            return "Cannot divide by zero";
+        }
+    }
+    function go() {
+        let num1 = parseFloat(document.getElementById('num1').value);
+        let num2 = parseFloat(document.getElementById('num2').value);
+
+        let result = "<p>Addition: " + addition(num1, num2) + "</p>";
+        result += "<p>Subtraction: " + subtraction(num1, num2) + "</p>";
+        result += "<p>Multiplication: " + multiplication(num1, num2) + "</p>";
+        result += "<p>Division: " + division(num1, num2) + "</p>";
+
+        if (num1 > num2) {
+            result += "<p>num1 is greater than num2</p>";
+        } else if (num1 < num2) {
+            result += "<p>num1 is less than num2</p>";
+        } else {
+            result += "<p>num1 is equal to num2</p>";
+        }
+        document.getElementById('result').innerHTML = result;
+        let forLoopResult = "<p>Numbers from 1 to num1 (using for loop): ";
+        for (let i = 1; i <= num1; i++) {
+            forLoopResult += i + " ";
+        }
+        forLoopResult += "</p>";
+        let whileLoopResult = "<p>Numbers from num2 to 1 (using while loop): ";
+        let j = num2;
+        while (j >= 1) {
+            whileLoopResult += j + " ";
+            j--;
+        }
+        whileLoopResult += "</p>";
+        document.getElementById('result').innerHTML += forLoopResult + whileLoopResult;
+    }
+</script>
+</body>
+</html>
